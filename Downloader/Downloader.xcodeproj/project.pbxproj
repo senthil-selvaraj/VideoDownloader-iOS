@@ -14,6 +14,9 @@
 		DC13B4FC1BB6620E00957A66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC13B4FB1BB6620E00957A66 /* Images.xcassets */; };
 		DC13B4FF1BB6620E00957A66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC13B4FD1BB6620E00957A66 /* LaunchScreen.xib */; };
 		DC13B50B1BB6620E00957A66 /* DownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC13B50A1BB6620E00957A66 /* DownloaderTests.swift */; };
+		DC51B1861BB6A44D0064D882 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC51B1851BB6A44D0064D882 /* AVFoundation.framework */; };
+		DC51B1881BB6A4510064D882 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC51B1871BB6A4510064D882 /* AVKit.framework */; };
+		DCAC9D4C1BB6805D00026358 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAC9D4B1BB6805D00026358 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		DC13B5041BB6620E00957A66 /* DownloaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC13B5091BB6620E00957A66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC13B50A1BB6620E00957A66 /* DownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderTests.swift; sourceTree = "<group>"; };
+		DC51B1851BB6A44D0064D882 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DC51B1871BB6A4510064D882 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		DCAC9D4B1BB6805D00026358 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC51B1881BB6A4510064D882 /* AVKit.framework in Frameworks */,
+				DC51B1861BB6A44D0064D882 /* AVFoundation.framework in Frameworks */,
+				DCAC9D4C1BB6805D00026358 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +70,9 @@
 		DC13B4E31BB6620E00957A66 = {
 			isa = PBXGroup;
 			children = (
+				DC51B1871BB6A4510064D882 /* AVKit.framework */,
+				DC51B1851BB6A44D0064D882 /* AVFoundation.framework */,
+				DCAC9D4B1BB6805D00026358 /* MediaPlayer.framework */,
 				DC13B4EE1BB6620E00957A66 /* Downloader */,
 				DC13B5071BB6620E00957A66 /* DownloaderTests */,
 				DC13B4ED1BB6620E00957A66 /* Products */,
@@ -415,6 +427,7 @@
 				DC13B5101BB6620E00957A66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC13B5111BB6620E00957A66 /* Build configuration list for PBXNativeTarget "DownloaderTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				DC13B5131BB6620E00957A66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
