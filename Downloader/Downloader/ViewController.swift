@@ -24,7 +24,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
        
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieLoaded:", name: UIWindowDidBecomeVisibleNotification , object:nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieLoaded:", name: "AVPlayerItemBecameCurrentNotification" , object:nil);
       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieClosed:", name: UIWindowDidBecomeHiddenNotification, object: nil);
         
@@ -68,15 +68,53 @@ class ViewController: UIViewController,UIWebViewDelegate {
     
     func movieLoaded(notification:NSNotification)
     {
-//        var window=notification.object as! UIWindow
-//        
-//        print(UIApplication.sharedApplication().delegate?.window!!.rootViewController?.childViewControllers)
         
-        print("movieLoaded")
+        var avplayerItem=notification.object as? AVPlayerItem
         
-        var timer:NSTimer=NSTimer(timeInterval: 0.3, target: self, selector: "selectView", userInfo: nil, repeats: false)
-        
-        timer .fire()
+        if let playItem = avplayerItem{
+            
+            var asset=playItem.asset as AVAsset
+            
+            print(asset.valueForKey("URL")!)
+            
+//            var lableIndicator:UILabel = UILabel(frame: CGRectMake(0, self.view.frame.size.height-100, 100, 25));
+//            
+//            lableIndicator.backgroundColor=UIColor.whiteColor()
+//            
+//            lableIndicator.text="Download the file"
+//            
+//            UIApplication.sharedApplication().delegate?.window!!.rootViewController?.view.addSubview(lableIndicator)
+            // 1
+            let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+            
+            // 2
+            let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                println("File Deleted")
+            })
+            let saveAction = UIAlertAction(title: "Save", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                println("File Saved")
+            })
+            
+            //
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+                println("Cancelled")
+            })
+            
+            
+            // 4
+            optionMenu.addAction(deleteAction)
+            optionMenu.addAction(saveAction)
+            optionMenu.addAction(cancelAction)
+            
+            // 5
+            self.presentViewController(optionMenu, animated: true, completion: nil)
+            
+            
+        }
+    
         
     }
     
@@ -93,7 +131,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
     {
         var window=notification.object as! UIWindow
         
-       // print(window.rootViewController?.childViewControllers)
+        print(window.rootViewController?.childViewControllers)
         
     }
     override func didReceiveMemoryWarning() {
