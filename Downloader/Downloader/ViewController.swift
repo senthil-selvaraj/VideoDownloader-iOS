@@ -25,12 +25,16 @@ class ViewController: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieLoaded:", name: "AVPlayerItemBecameCurrentNotification" , object:nil);
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerLoaded:", name: UIWindowDidBecomeKeyNotification, object: nil);
       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieClosed:", name: UIWindowDidBecomeHiddenNotification, object: nil);
         
         self.webView?.delegate=self
         
-        self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: "http://www.youtube.com/")!))
+        self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: "https://in.news.yahoo.com/watch--this-boy-can-solved-the-rubik-s-cube--blindfolded--in-under-20-seconds-084236723.html?vp=1")!))
+        
+       // self.webView?.addObserver(observer: NSObject, forKeyPath: <#String#>, options: <#NSKeyValueObservingOptions#>, context: <#UnsafeMutablePointer<Void>#>)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -40,9 +44,9 @@ class ViewController: UIViewController,UIWebViewDelegate {
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        if(navigationType==UIWebViewNavigationType.Other)
+        if(navigationType==UIWebViewNavigationType.LinkClicked)
         {
-           // print(request.URL)
+           print(request.URL)
             
            // print(navigationType)
         }
@@ -66,6 +70,34 @@ class ViewController: UIViewController,UIWebViewDelegate {
         //print("Finished")
     }
     
+    func moviePlayerLoaded(notification:NSNotification)
+    {
+        var window = notification.object as! UIWindow
+        
+        if (window != self.view.window)
+        {
+            var lableDownloadButton:UIButton=UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            
+            lableDownloadButton.frame=CGRectMake(15, self.view.frame.size.height-60, 100, 35)
+            
+            lableDownloadButton.layer.cornerRadius=5
+            
+            lableDownloadButton.clipsToBounds=true
+            
+            lableDownloadButton.backgroundColor=UIColor.whiteColor()
+            
+            lableDownloadButton.setTitle("Download", forState: UIControlState.Normal)
+            
+            lableDownloadButton.backgroundColor=UIColor.orangeColor()
+            
+            window .addSubview(lableDownloadButton)
+            
+
+        }
+        
+    }
+    
+    
     func movieLoaded(notification:NSNotification)
     {
         
@@ -77,53 +109,9 @@ class ViewController: UIViewController,UIWebViewDelegate {
             
             print(asset.valueForKey("URL")!)
             
-//            var lableIndicator:UILabel = UILabel(frame: CGRectMake(0, self.view.frame.size.height-100, 100, 25));
-//            
-//            lableIndicator.backgroundColor=UIColor.whiteColor()
-//            
-//            lableIndicator.text="Download the file"
-//            
-//            UIApplication.sharedApplication().delegate?.window!!.rootViewController?.view.addSubview(lableIndicator)
-            // 1
-            let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
-            
-            // 2
-            let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                println("File Deleted")
-            })
-            let saveAction = UIAlertAction(title: "Save", style: .Default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                println("File Saved")
-            })
-            
-            //
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
-                (alert: UIAlertAction!) -> Void in
-                println("Cancelled")
-            })
-            
-            
-            // 4
-            optionMenu.addAction(deleteAction)
-            optionMenu.addAction(saveAction)
-            optionMenu.addAction(cancelAction)
-            
-            // 5
-            self.presentViewController(optionMenu, animated: true, completion: nil)
-            
-            
         }
     
         
-    }
-    
-    
-    func selectView()
-    {
-                //var window=notification.object as! UIWindow
-        
-                print(UIApplication.sharedApplication().delegate?.window!!.rootViewController?.childViewControllers)
     }
     
     
