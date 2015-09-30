@@ -288,8 +288,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mohan Kuppusamy (36N6R265X9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mohan Kuppusamy (36N6R265X9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ramachandran S (3NNZ4T6TP8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ramachandran S (3NNZ4T6TP8)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -311,7 +311,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3c2c1fba-3821-48b7-bdbd-d13258c3f7c6";
+				PROVISIONING_PROFILE = "19dcd3a1-35cf-4814-9472-ce766ef898d2";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -334,8 +334,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mohan Kuppusamy (36N6R265X9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mohan Kuppusamy (36N6R265X9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ramachandran S (3NNZ4T6TP8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ramachandran S (3NNZ4T6TP8)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -350,7 +350,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "3c2c1fba-3821-48b7-bdbd-d13258c3f7c6";
+				PROVISIONING_PROFILE = "19dcd3a1-35cf-4814-9472-ce766ef898d2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

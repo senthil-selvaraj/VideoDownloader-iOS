@@ -16,13 +16,41 @@ import AVFoundation
 
 import AVKit
 
-class ViewController: UIViewController,UIWebViewDelegate {
+class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
 
-    @IBOutlet var webView:UIWebView?
+    @IBOutlet var webView:UIWebView!
+    
+    var searchBar:UISearchBar!
     
     override func viewDidLoad() {
        
         super.viewDidLoad()
+        
+        
+        self.searchBar=UISearchBar(frame: CGRectMake(0, 0, 250, 40))
+        
+        self.searchBar.tintColor=UIColor.whiteColor()
+        
+        self.searchBar.searchBarStyle=UISearchBarStyle.Minimal
+        
+        self.navigationItem.titleView=self.searchBar;
+        
+        
+        self.webView=UIWebView()
+        
+        self.webView!.setTranslatesAutoresizingMaskIntoConstraints(false);
+        
+        self.view .addSubview(self.webView)
+        
+        let webviewConsWidth=NSLayoutConstraint.constraintsWithVisualFormat("H:|[webView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views:["webView":self.webView!])
+        
+        let webviewConsHeight=NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[webView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views:["webView":self.webView!])
+        
+        self.view?.addConstraints(webviewConsWidth)
+        
+        self.view?.addConstraints(webviewConsHeight)
+        
+        // Do any additional setup after loading the view, typically from a nib.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieLoaded:", name: "AVPlayerItemBecameCurrentNotification" , object:nil);
         
@@ -34,9 +62,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
         
         self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: "https://in.news.yahoo.com/watch--this-boy-can-solved-the-rubik-s-cube--blindfolded--in-under-20-seconds-084236723.html?vp=1")!))
         
-       // self.webView?.addObserver(observer: NSObject, forKeyPath: <#String#>, options: <#NSKeyValueObservingOptions#>, context: <#UnsafeMutablePointer<Void>#>)
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     
@@ -69,6 +95,9 @@ class ViewController: UIViewController,UIWebViewDelegate {
         
         //print("Finished")
     }
+    
+    // MARK: - Searchbar Delegate methods
+    
     
     func moviePlayerLoaded(notification:NSNotification)
     {

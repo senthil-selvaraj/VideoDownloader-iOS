@@ -14,9 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var navigationController:UINavigationController?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        
+        
+        // navigation bar appearence settings
+        
+       // UINavigationBar.appearance().backgroundColor=UIColor.brownColor()
+        
+//        UINavigationBar.appearance().barTintColor=UIColor(red: 255.0/255.0, green: 167.0/255.0, blue: 51.0/255.0, alpha: 1.0)
+//        
+//       UINavigationBar.appearance().translucent=true
+        
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.makeKeyAndVisible()
+        var rootController:ViewController=ViewController()
+        self.navigationController=UINavigationController(rootViewController: rootController)
+        self.window?.rootViewController=self.navigationController
         return true
     }
 
