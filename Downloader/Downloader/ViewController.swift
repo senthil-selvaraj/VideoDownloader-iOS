@@ -22,14 +22,23 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
     
     var searchBar:UISearchBar!
     
+    var searchURL:NSURL!
+    
     override func viewDidLoad() {
        
         super.viewDidLoad()
         
-        
         self.searchBar=UISearchBar(frame: CGRectMake(0, 0, 250, 40))
         
         self.searchBar.tintColor=UIColor.whiteColor()
+        
+        self.searchBar.placeholder="Search or enter web address"
+        
+        self.searchBar.showsScopeBar=true
+        
+        self.searchBar.tintColor=UIColor.blackColor()
+        
+        self.searchBar.delegate=self;
         
         self.searchBar.searchBarStyle=UISearchBarStyle.Minimal
         
@@ -38,13 +47,15 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
         
         self.webView=UIWebView()
         
+        self.webView?.delegate=self
+        
         self.webView!.setTranslatesAutoresizingMaskIntoConstraints(false);
         
         self.view .addSubview(self.webView)
         
         let webviewConsWidth=NSLayoutConstraint.constraintsWithVisualFormat("H:|[webView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views:["webView":self.webView!])
         
-        let webviewConsHeight=NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[webView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views:["webView":self.webView!])
+        let webviewConsHeight=NSLayoutConstraint.constraintsWithVisualFormat("V:|[webView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views:["webView":self.webView!])
         
         self.view?.addConstraints(webviewConsWidth)
         
@@ -57,10 +68,6 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerLoaded:", name: UIWindowDidBecomeKeyNotification, object: nil);
       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieClosed:", name: UIWindowDidBecomeHiddenNotification, object: nil);
-        
-        self.webView?.delegate=self
-        
-        self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: "https://in.news.yahoo.com/watch--this-boy-can-solved-the-rubik-s-cube--blindfolded--in-under-20-seconds-084236723.html?vp=1")!))
         
         
     }
@@ -98,6 +105,69 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
     
     // MARK: - Searchbar Delegate methods
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+
+
+    }
+    
+    func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        // Hide the keypad
+        searchBar .resignFirstResponder()
+        
+        // Hide the cancel button
+        searchBar.showsCancelButton=false
+        
+    }
+    
+    func searchBarResultsListButtonClicked(searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        // Check whether the search bar text empty or not
+        
+        if let urlString=searchBar.text
+        {
+            searchURL=NSURL(string: searchBar.text)!
+        }
+        
+        // Hide the Searchbar keypad
+        searchBar .resignFirstResponder()
+        
+        // Hide the cancel button
+        searchBar.showsCancelButton=false
+        
+        searchBar.text=""
+        
+        searchBar.placeholder=searchURL.host
+        
+        // Load the url into webview
+        self.webView?.loadRequest(NSURLRequest(URL:searchURL))
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        // Show the search bar cancel buutton
+        self.searchBar.showsCancelButton=true
+        
+        //
+        self.searchBar.placeholder="Search or enter web address"
+        
+        if let URL=searchURL
+        {
+             self.searchBar.text=searchURL.absoluteString
+            
+        }
+        
+    }
+    
+     // MARK: - General methods
     
     func moviePlayerLoaded(notification:NSNotification)
     {
@@ -121,7 +191,6 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
             
             window .addSubview(lableDownloadButton)
             
-
         }
         
     }

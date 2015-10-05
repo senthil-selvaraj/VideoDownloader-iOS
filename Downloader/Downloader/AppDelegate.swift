@@ -16,8 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var navigationController:UINavigationController?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // UiSearchBar Appearence
+                
         // navigation bar appearence settings
         
        // UINavigationBar.appearance().backgroundColor=UIColor.brownColor()
