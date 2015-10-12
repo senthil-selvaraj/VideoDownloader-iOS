@@ -49,7 +49,7 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
         
         self.webView?.delegate=self
         
-        self.webView!.setTranslatesAutoresizingMaskIntoConstraints(false);
+        self.webView!.translatesAutoresizingMaskIntoConstraints = false;
         
         self.view .addSubview(self.webView)
         
@@ -79,7 +79,7 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
         
         if(navigationType==UIWebViewNavigationType.LinkClicked)
         {
-           print(request.URL)
+           print(request.URL, terminator: "")
             
            // print(navigationType)
         }
@@ -88,9 +88,9 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
         
     }
     
-    override func  observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>)
+    override func  observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>)
     {
-        print("KeyPath : "+keyPath)
+        print("KeyPath : "+keyPath!, terminator: "")
     
     }
     
@@ -132,9 +132,9 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
         
         // Check whether the search bar text empty or not
         
-        if let urlString=searchBar.text
+        if let _=searchBar.text
         {
-            searchURL=NSURL(string: searchBar.text)!
+            searchURL=NSURL(string: searchBar.text!)
         }
         
         // Hide the Searchbar keypad
@@ -171,11 +171,11 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
     
     func moviePlayerLoaded(notification:NSNotification)
     {
-        var window = notification.object as! UIWindow
+        let window = notification.object as! UIWindow
         
         if (window != self.view.window)
         {
-            var lableDownloadButton:UIButton=UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            let lableDownloadButton:UIButton=UIButton(type: UIButtonType.Custom)
             
             lableDownloadButton.frame=CGRectMake(15, self.view.frame.size.height-60, 100, 35)
             
@@ -199,13 +199,13 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
     func movieLoaded(notification:NSNotification)
     {
         
-        var avplayerItem=notification.object as? AVPlayerItem
+        let avplayerItem=notification.object as? AVPlayerItem
         
         if let playItem = avplayerItem{
             
-            var asset=playItem.asset as AVAsset
+            let asset=playItem.asset as AVAsset
             
-            print(asset.valueForKey("URL")!)
+            print(asset.valueForKey("URL")!, terminator: "")
             
         }
     
@@ -215,9 +215,9 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
     
     func movieClosed(notification:NSNotification)
     {
-        var window=notification.object as! UIWindow
+        let window=notification.object as! UIWindow
         
-        print(window.rootViewController?.childViewControllers)
+        print(window.rootViewController?.childViewControllers, terminator: "")
         
     }
     override func didReceiveMemoryWarning() {

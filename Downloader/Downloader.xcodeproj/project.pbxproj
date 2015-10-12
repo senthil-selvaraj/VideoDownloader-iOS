@@ -171,6 +171,7 @@
 		DC13B4E41BB6620E00957A66 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = iSolutionsApps;
 				TargetAttributes = {
