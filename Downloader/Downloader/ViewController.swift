@@ -69,6 +69,8 @@ class ViewController: UIViewController,UIWebViewDelegate,UISearchBarDelegate {
       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "movieClosed:", name: UIWindowDidBecomeHiddenNotification, object: nil);
         
+        print("This is the version 1.0 ")
+        
         
     }
     
